@@ -189,3 +189,8 @@ Tree.prototype.isBalanced = function () {
 
   return _isBalanced(this.root);
 };
+
+Tree.prototype.rebalance = function () {
+  const nodes = this.inOrder();
+  this.root = this.buildTree(nodes);
+};
