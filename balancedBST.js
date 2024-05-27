@@ -206,4 +206,4 @@ function prettyPrint(node, prefix = "", isLeft = true) {
 }
 
 // Export the classes and function
-export default { Node, Tree, prettyPrint };
+module.exports = { Node, Tree, prettyPrint };
