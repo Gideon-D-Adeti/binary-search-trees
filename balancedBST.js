@@ -174,3 +174,18 @@ Tree.prototype.depth = function (node) {
 
   return _depth(this.root, node, 0);
 };
+
+Tree.prototype.isBalanced = function () {
+  const _isBalanced = (node) => {
+    if (node === null) return true;
+
+    const leftHeight = this.height(node.left);
+    const rightHeight = this.height(node.right);
+
+    if (Math.abs(leftHeight - rightHeight) > 1) return false;
+
+    return _isBalanced(node.left) && _isBalanced(node.right);
+  };
+
+  return _isBalanced(this.root);
+};
