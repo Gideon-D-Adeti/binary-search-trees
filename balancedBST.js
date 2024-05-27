@@ -84,3 +84,22 @@ Tree.prototype.find = function (value) {
 
   return _find(this.root, value);
 };
+
+Tree.prototype.levelOrder = function (callback) {
+  const result = [];
+  if (this.root === null) return result;
+
+  const queue = [this.root];
+  while (queue.length > 0) {
+    const current = queue.shift();
+    if (callback) {
+      callback(current);
+    } else {
+      result.push(current.data);
+    }
+    if (current.left) queue.push(current.left);
+    if (current.right) queue.push(current.right);
+  }
+
+  return result;
+};
