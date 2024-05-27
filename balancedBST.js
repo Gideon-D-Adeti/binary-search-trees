@@ -72,3 +72,15 @@ Tree.prototype._minValueNode = function (node) {
   }
   return current;
 };
+
+Tree.prototype.find = function (value) {
+  const _find = (node, value) => {
+    if (node === null || node.data === value) return node;
+
+    if (value < node.data) return _find(node.left, value);
+
+    return _find(node.right, value);
+  };
+
+  return _find(this.root, value);
+};
