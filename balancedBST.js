@@ -23,3 +23,19 @@ class Tree {
     return root;
   }
 }
+
+Tree.prototype.insert = function (value) {
+  const _insert = (node, value) => {
+    if (node === null) return new Node(value); // Base case: found an empty spot
+
+    if (value < node.data) {
+      node.left = _insert(node.left, value); // Recur to the left subtree
+    } else if (value > node.data) {
+      node.right = _insert(node.right, value); // Recur to the right subtree
+    }
+
+    return node; // Return the unchanged node pointer
+  };
+
+  this.root = _insert(this.root, value); // Start at the root
+};
